@@ -1,0 +1,71 @@
+{
+   "Description": "Template that creates a SNS topic. It takes DisplayName of the SNS topic as parameter",
+   "Parameters": {
+      "DisplayName": {
+         "Description": "Display Name to use for SNS topic",
+         "Type": "String",
+         "Default": "TopicCreatedByIntegTest",
+         "AllowedPattern": "(?:[0-9a-zA-Z][a-zA-Z0-9._-]{0,127})*(?:,(?:[0-9a-zA-Z][a-zA-Z0-9._-]{0,127}))*+",
+         "MinLength": "1",
+         "MaxLength": "100",
+         "ConstraintDescription": "must contain only alphanumberic characters upto 100 length"
+      },
+      "SecondParameter": {
+         "Description": "Display Name to use for SNS topic",
+         "Type": "String",
+         "Default": "TopicCreatedByIntegTest",
+         "AllowedPattern": "(?i)([a-zA-Z0-9-])+",
+         "MinLength": "1",
+         "MaxLength": "100",
+         "ConstraintDescription": "must contain only alphanumberic characters upto 100 length"
+      },
+      "ThirdParameter": {
+         "Description": "Display Name to use for SNS topic",
+         "Type": "String",
+         "Default": "TopicCreatedByIntegTest",
+         "AllowedPattern": "(?i)[a-z]([a-z0-9-])+",
+         "MinLength": "1",
+         "MaxLength": "100",
+         "ConstraintDescription": "must contain only alphanumberic characters upto 100 length"
+      }
+   },
+    "Metadata": {
+        "AWS::CloudFormation::Interface": {
+            "ParameterGroups": [
+                {
+                    "Label": {
+                        "default": "Group 1"
+                    },
+                    "Parameters": [
+                        "DisplayName"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Group 2"
+                    },
+                    "Parameters": [
+                        "SecondParameter",
+                        "ThirdParameter"
+                    ]
+                }
+            ],
+            "ParameterLabels": {
+                "InstanceType": {
+                    "default": "Server size:"
+                },
+                "KeyName": {
+                    "default": "Key pair:"
+                },
+                "SSHLocation": {
+                    "default": "CIDR range:"
+                }
+            }
+        }
+    },
+   "Resources": {
+      "MySNSTopic": {
+         "Type": "AWS::SNS::Topic"
+      }
+   }
+}
